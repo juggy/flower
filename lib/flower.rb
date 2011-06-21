@@ -44,7 +44,7 @@ class Flower
     messages.each do |message_json|
       next if message_json["uuid"] == uuid # Ignore my own messages
       
-      if match = message_json["content"].match(/^Bot[\s|,|:]*(.*)/)
+      if match = message_json["content"].respond_to?(:match) && message_json["content"].match(/^Bot[\s|,|:]*(.*)/)
         matches = match.to_a
         puts(" Got message: #{matches[1]}")
         case matches[1]
