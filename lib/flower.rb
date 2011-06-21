@@ -20,11 +20,14 @@ class Flower
     monitor!
   end
   
-  def say(message)
-    post(message)
+  def say(message, options = {})
+    if options[:mention]
+      tags = ":highlight:#{options[:mention]}"
+    end
+    post(message, tags)
   end
 
-  def paste(*message)
+  def paste(message)
     message = message.join("\n") if message.respond_to?(:join)
     message = message.split("\n").map{ |str| (" " * 4) + str }.join("\\n")
     post(message)
@@ -66,7 +69,7 @@ class Flower
     end
   end
 
-  def post(message)
-    session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :app => "chat", :event => "message", :channel => "/flows/main")
+  def post(message, tags = nil)
+    session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :tags => tags, :app => "chat", :event => "message", :channel => "/flows/main")
   end
 end
