@@ -12,7 +12,12 @@ class Flower::Session
     puts " Logging into the flow..."
     response = Typhoeus::Request.post(login_url,
       :params => {:user_session => {:email => email, :password => password}})
-    self.cookie = response.headers_hash['Set-Cookie'].first
+    if response.code == 302
+      self.cookie = response.headers_hash['Set-Cookie'].join("; ")
+    else
+      puts(" Could not log into Flow - Please set EMAIL and PASSWORD environment variables")
+      exit
+    end
   end
   
   def get_json(url, params = {})
