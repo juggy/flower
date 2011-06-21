@@ -1,5 +1,5 @@
 class Help < Flower::Command
-  def self.parse(command, flower)
+  def self.parse(command, sender, flower)
     if command =~ /^help/i
       flower.say("Available commands:")
       text = [

@@ -3,16 +3,20 @@ require 'typhoeus'
 require 'json'
 
 class Flower
-  attr_accessor :messages_url, :post_url, :session, :uuid
+  attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
   
   def initialize
     puts " Booting Flower..."
 
     self.messages_url = "https://mynewsdesk.flowdock.com/flows/main/apps/chat/messages"
     self.post_url     = "https://mynewsdesk.flowdock.com/messages"
+    self.flow_url     = "https://mynewsdesk.flowdock.com/flows/main.json"
     self.uuid         = "vpyx304DPTA0msh-"
     self.session      = Session.new
+    self.users        = {}
     
+    session.login
+    get_users!
     monitor!
   end
   
@@ -27,12 +31,18 @@ class Flower
   end
   
   def monitor!
-    session.login
     get_messages do |messages|
       respond_to(messages)
     end
   end
-  
+
+  def get_users!
+    data = session.get_json(flow_url)
+    data["users"].map{|u| u["user"] }.each do |user|
+      self.users[user["id"]] = {:id => user["id"], :nick => user["nick"]}
+    end
+  end
+
   private
   def get_messages
     since = nil
@@ -51,7 +61,7 @@ class Flower
       next if message_json["uuid"] == uuid # Ignore my own messages
       
       if match = message_json["content"].respond_to?(:match) && message_json["content"].match(/^Bot[\s|,|:]*(.*)/)
-        Flower::Command.delegate_command(match.to_a[1], self)
+        Flower::Command.delegate_command(match.to_a[1], users[message_json["user"].to_i], self)
       end
     end
   end

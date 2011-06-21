@@ -1,5 +1,5 @@
 class Ping < Flower::Command
-  def self.parse(command, flower)
+  def self.parse(command, sender, flower)
     if command =~ /^ping/i
       flower.say("Pong!")
     end

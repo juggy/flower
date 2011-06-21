@@ -1,7 +1,7 @@
 class Flower::Command
-  def self.delegate_command(command, flower)
+  def self.delegate_command(command, sender, flower)
     subclasses.each do |subclass|
-      subclass.parse(command, flower)
+      subclass.parse(command, sender, flower)
     end
   end
   
