@@ -1,0 +1,5 @@
+=== Flower
+
+`ENV['password']=your_pass ENV['email']=you@company.com ruby run.rb`
+    
+Enjoy!
