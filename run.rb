@@ -1,6 +1,10 @@
-require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'flower'))
-require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'session'))
+$: << "."
+require "lib/flower"
+require "lib/session"
+require "lib/command"
 
-puts " Booting the Flow:er..."
+Dir.glob("lib/commands/*.rb").each do |file|
+  require file
+end
 
 Flower.new

@@ -9,11 +9,12 @@ class Flower::Session
   end
   
   def login
-    puts " Logging into the flow..."
+    puts(" Logging into the Flow...")
     response = Typhoeus::Request.post(login_url,
       :params => {:user_session => {:email => email, :password => password}})
     if response.code == 302
       self.cookie = response.headers_hash['Set-Cookie'].join("; ")
+      puts(" Bot is online!")
     else
       puts(" Could not log into Flow - Please set EMAIL and PASSWORD environment variables")
       exit

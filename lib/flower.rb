@@ -6,6 +6,8 @@ class Flower
   attr_accessor :messages_url, :post_url, :session, :uuid
   
   def initialize
+    puts " Booting Flower..."
+
     self.messages_url = "https://mynewsdesk.flowdock.com/flows/main/apps/chat/messages"
     self.post_url     = "https://mynewsdesk.flowdock.com/messages"
     self.uuid         = "vpyx304DPTA0msh-"
@@ -15,13 +17,17 @@ class Flower
   end
   
   def say(message)
-    session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :app => "chat", :event => "message", :channel => "/flows/main")
+    post(message)
+  end
+
+  def paste(*message)
+    message = message.join("\n") if message.respond_to?(:join)
+    message = message.split("\n").map{ |str| (" " * 4) + str }.join("\\n")
+    post(message)
   end
   
   def monitor!
     session.login
-    puts(" Im now online")
-    #say("Bot is online!")
     get_messages do |messages|
       respond_to(messages)
     end
@@ -45,15 +51,12 @@ class Flower
       next if message_json["uuid"] == uuid # Ignore my own messages
       
       if match = message_json["content"].respond_to?(:match) && message_json["content"].match(/^Bot[\s|,|:]*(.*)/)
-        matches = match.to_a
-        puts(" Got message: #{matches[1]}")
-        case matches[1]
-        when ""
-          say("Yes, what?")
-        when /ping/i
-          say("Pong!")
-        end
+        Flower::Command.delegate_command(match.to_a[1], self)
       end
     end
+  end
+
+  def post(message)
+    session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :app => "chat", :event => "message", :channel => "/flows/main")
   end
 end
