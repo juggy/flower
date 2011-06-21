@@ -31,7 +31,7 @@ class Flower
   def get_messages
     since = nil
     while(true) do
-      messages = session.get_json(messages_url, :after_time => since, :count => 1)
+      messages = session.get_json(messages_url, :after_time => since, :count => (since ? 5 : 1))
       if !messages.empty?
         yield messages
         since = messages.last["sent"]
