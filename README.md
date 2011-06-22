@@ -1,5 +1,7 @@
 # Flower
 
-    ENV['PASSWORD']=your_pass ENV['EMAIL']=you@company.com rake run
+Copy and rename `config.yml.example` to `config.yml` and fill it with your settings
+
+    rake run
 
 Enjoy!
