@@ -1,0 +1,12 @@
+GEM
+  specs:
+    mime-types (1.16)
+    typhoeus (0.2.4)
+      mime-types
+      mime-types
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  typhoeus (~> 0.2.4)
