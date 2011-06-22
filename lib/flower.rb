@@ -20,7 +20,7 @@ class Flower
     get_users!
     monitor!
   end
-  
+
   def say(message, options = {})
     if options[:mention]
       tags = ":highlight:#{options[:mention]}"
@@ -33,7 +33,8 @@ class Flower
     message = message.split("\n").map{ |str| (" " * 4) + str }.join("\\n")
     post(message)
   end
-  
+
+  private
   def monitor!
     get_messages do |messages|
       respond_to(messages)
@@ -47,7 +48,6 @@ class Flower
     end
   end
 
-  private
   def get_messages
     since = nil
     while(true) do
@@ -64,10 +64,14 @@ class Flower
     messages.each do |message_json|
       next if message_json["uuid"] == uuid # Ignore my own messages
       
-      if match = message_json["content"].respond_to?(:match) && message_json["content"].match(/^Bot[\s|,|:]*(.*)/)
+      if match = bot_message(message_json["content"])
         Flower::Command.delegate_command(match.to_a[1], users[message_json["user"].to_i], self)
       end
     end
+  end
+
+  def bot_message(content)
+    content.respond_to?(:match) && content.match(/^Bot[\s|,|:]*(.*)/)
   end
 
   def post(message, tags = nil)
