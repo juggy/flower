@@ -11,11 +11,11 @@ class Flower
   def initialize
     puts " Booting Flower..."
 
-    self.messages_url = "https://mynewsdesk.flowdock.com/flows/main/apps/chat/messages"
-    self.post_url     = "https://mynewsdesk.flowdock.com/messages"
-    self.flow_url     = "https://mynewsdesk.flowdock.com/flows/main.json"
-    self.uuid         = "vpyx304DPTA0msh-"
-    self.session      = Session.new
+    self.messages_url = Flower::Config.messages_url
+    self.post_url     = Flower::Config.post_url
+    self.flow_url     = Flower::Config.flow_url
+    self.uuid         = Flower::Config.uuid
+    self.session      = Session.new()
     self.users        = {}
     
     session.login

@@ -4,8 +4,8 @@ class Flower::Session
   
   def initialize
     self.login_url = "https://www.flowdock.com/session"
-    self.email     = ENV['EMAIL']
-    self.password  = ENV['PASSWORD']
+    self.email     = Flower::Config.email
+    self.password  = Flower::Config.password
   end
   
   def login
