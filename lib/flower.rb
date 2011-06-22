@@ -5,7 +5,9 @@ require 'json'
 
 class Flower
   attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
-  
+
+  COMMANDS = {} # We are going to load available commands in here
+
   def initialize
     puts " Booting Flower..."
 

@@ -1,14 +1,13 @@
 class Flower::Command
-  def self.delegate_command(command, sender, flower)
-    subclasses.each do |subclass|
-      subclass.parse(command, sender, flower)
+  def self.respond_to(*commands)
+    commands.each do |command|
+      Flower::COMMANDS[command] ? Flower::COMMANDS[command] << self : Flower::COMMANDS[command] = [self]
     end
   end
-  
-  private
-  def self.subclasses
-    @subclasses ||= Class.constants.find_all do |klass|
-      klass != klass.upcase ? self > (Object.const_get(klass)) : nil
-    end.map{ |klass| Object.const_get(klass) }
+
+  def self.delegate_command(command, sender, flower)
+    Flower::COMMANDS[command].each do |klass|
+      klass.respond(command, sender, flower)
+    end
   end
 end
