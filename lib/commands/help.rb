@@ -3,7 +3,7 @@
 class Help < Flower::Command
   respond_to "help", "hjälp"
 
-  def self.respond(command, sender, flower)
+  def self.respond(command, message, sender, flower)
     flower.say("Available commands:")
     flower.paste(help_text)
   end

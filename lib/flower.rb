@@ -67,7 +67,8 @@ class Flower
       next if message_json["uuid"] == uuid # Ignore my own messages
       
       if match = bot_message(message_json["content"])
-        Flower::Command.delegate_command(match.to_a[1], users[message_json["user"].to_i], self)
+        match = match.to_a[1].split
+        Flower::Command.delegate_command(match.shift || "", match.join(" "), users[message_json["user"].to_i], self)
       end
     end
   end

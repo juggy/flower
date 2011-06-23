@@ -9,8 +9,8 @@ class Flower::Command
     end
   end
 
-  def self.delegate_command(command, sender, flower)
+  def self.delegate_command(command, message, sender, flower)
     return if Flower::COMMANDS[command].nil?
-    Flower::COMMANDS[command].respond(command, sender, flower)
+    Flower::COMMANDS[command].respond(command, message, sender, flower)
   end
 end
