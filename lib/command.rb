@@ -1,13 +1,16 @@
 class Flower::Command
   def self.respond_to(*commands)
     commands.each do |command|
-      Flower::COMMANDS[command] ? Flower::COMMANDS[command] << self : Flower::COMMANDS[command] = [self]
+      if Flower::COMMANDS[command]
+        warn "Command already defined: #{command}"
+      else
+        Flower::COMMANDS[command] = self
+      end
     end
   end
 
   def self.delegate_command(command, sender, flower)
-    Flower::COMMANDS[command].each do |klass|
-      klass.respond(command, sender, flower)
-    end
+    return if Flower::COMMANDS[command].nil?
+    Flower::COMMANDS[command].respond(command, sender, flower)
   end
 end
