@@ -8,13 +8,13 @@ class Flower
   require File.expand_path(File.join(File.dirname(__FILE__), 'command'))
   require File.expand_path(File.join(File.dirname(__FILE__), 'config'))
 
-  Dir.glob("commands/*.rb").each do |file|
-    require File.expand_path(File.join(File.dirname(__FILE__), file))
+  COMMANDS = {} # We are going to load available commands in here
+
+  Dir.glob("lib/commands/*.rb").each do |file|
+    require File.expand_path(File.join(File.dirname(__FILE__), "..", file))
   end
 
   attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
-
-  COMMANDS = {} # We are going to load available commands in here
 
   def initialize
     self.messages_url = Flower::Config.messages_url
@@ -38,13 +38,13 @@ class Flower
     post(message)
   end
 
-  private
   def boot!
     session.login
     get_users!
     monitor!
   end
 
+  private
   def monitor!
     get_messages do |messages|
       respond_to(messages)
