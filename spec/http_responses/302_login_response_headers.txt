@@ -1,0 +1,15 @@
+HTTP/1.1 302 Found
+Date: Sun, 26 Jun 2011 19:28:28 GMT
+Server: Apache
+X-UA-Compatible: IE=Edge,chrome=1
+X-Runtime: 0.020059
+Cache-Control: no-cache
+Set-Cookie: _flowdock_session=BAh7CiIVdXNlcl9jcmVkZW50aWFscyIBgGQ0NjQ0ZjJiZjMzM2RmNTE1YjAxZTAxMDU5MmZiYzdhMWE4ODg5NjBjNGFjNmViNDViNGE2YzAxYjgyMGFkOWIwNmE0YjNhOTUwOTM1ODczMjYyNWVmOWU3MDdiZTQzMmE1MWNlNDNkMzA4MTdkMDA5ZGUzZWUwNmZmNzQ2NWM1IhRob3Zlcl9zdXBwb3J0ZWRUIg9zZXNzaW9uX2lkIiVlMWJhNWRhODNkN2UxOGIwODhiNzQ3OTM3MjAyYjIxMiIWaW5wdXRfZGV2aWNlX3R5cGUiCk1PVVNFIhh1c2VyX2NyZWRlbnRpYWxzX2lkaQJ9KA%3D%3D--74aa592103bff187e6e46f73e45f5d50fb58cffa; domain=.flowdock.com; path=/; secure; HttpOnly
+Set-Cookie: user_credentials=d4644f2bf333df515b01e010592fbc7a1a888960c4ac6eb45b4a6c01b820ad9b06a4b3a9509358732625ef9e707be432a51ce43d30817d009de3ee06ff7465c5%3A%3A10365; domain=.flowdock.com; path=/; secure
+Set-Cookie: flash=%7B%7D; domain=.flowdock.com; path=/; expires=Sun, 26-Jun-2011 19:38:28 GMT
+Location: https://www.flowdock.com/flows
+Status: 302
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 103
+Content-Type: text/html; charset=utf-8

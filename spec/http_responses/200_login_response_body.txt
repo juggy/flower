@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if (lte IE 7) ]>
+<html class="no-js ie ie-old" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie ie8" lang="en">
+<![endif]-->
+<!--[if (gte IE 9)]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<link href="/fluid-icon.png" rel="fluid-icon" type="image/png">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" type="image/png">
+<title>Flowdock</title>
+<meta name="csrf-param" content="authenticity_token"/>
+<meta name="csrf-token" content="gtxsXlqaCEWl3VkEDZNd+gFwIC/ly6Dr+aLhzeN2Zqg="/>
+<link href="https://d2nx3wc0reuy7.cloudfront.net/7459a0578/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="https://d2nx3wc0reuy7.cloudfront.net/a2c4bec75/javascripts/jquery.min.js" type="text/javascript"></script>
+<script src="https://d2nx3wc0reuy7.cloudfront.net/deb3f3359/javascripts/bundle.js" type="text/javascript"></script>
+<script src="https://www.flowdock.com/session.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div id="wrapper">
+<header class="login">
+<nav class="site">
+<a href="https://www.flowdock.com/" title="Go to Flowdock home">
+<h1>Flowdock</h1>
+</a>
+<ul>
+<li>
+<a href="https://www.flowdock.com/plans">Plans & Pricing</a>
+</li>
+<li>
+<a href="https://www.flowdock.com/tour">Tour</a>
+</li>
+<li>
+<a href="https://www.flowdock.com/help">Help</a>
+</li>
+<li>
+<a href="https://www.flowdock.com/about">About</a>
+</li>
+</ul>
+</nav>
+<nav class="login">
+<ul>
+<li class="signup">
+<a class="signup" href="https://www.flowdock.com/organizations/new">Sign Up</a>
+</li>
+<li class="login">
+<a href="https://www.flowdock.com/session">Login</a>
+</li>
+</ul>
+</nav>
+</header>
+
+<div class="hr narrow"></div>
+<div class="container">
+<div class="" id="content">
+<h2 class="main-header" id="main-header">Log in to Flowdock</h2>
+<div class="content-page">
+<form accept-charset="UTF-8" action="https://www.flowdock.com/session" class="formtastic user_session" id="new_user_session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="gtxsXlqaCEWl3VkEDZNd+gFwIC/ly6Dr+aLhzeN2Zqg=" /></div>
+<div class="simple-box error">
+<p>Oops! Incorrect email or password.</p>
+</div>
+<fieldset class="inputs"><ol><li class="email required" id="user_session_email_input">
+<label for="user_session_email">Email address</label>
+<input autofocus id="user_session_email" name="user_session[email]" required tabindex="1" type="email">
+</li>
+<li class="password required" id="user_session_password_input"><label for="user_session_password">Password<abbr title="required">*</abbr></label><input id="user_session_password" name="user_session[password]" required="required" tabindex="2" type="password" /></li>
+<li class="optional" id="forgot_password" style="width: 70%;">
+<a href="https://www.flowdock.com/reset/new" class="reset">Can't log in?</a>
+<a href="https://www.flowdock.com/organizations/new" class="reset" style="padding-left: 5px;">No account?</a>
+</li>
+<li class="boolean optional" id="user_session_remember_me_input"><input name="user_session[remember_me]" type="hidden" value="0" /><label for="user_session_remember_me"><input id="user_session_remember_me" name="user_session[remember_me]" tabindex="3" type="checkbox" value="1" />Remember me</label></li>
+</ol></fieldset>
+<fieldset class="buttons"><ol><li class="commit"><input class="button blue create" id="user_session_submit" name="commit" tabindex="4" type="submit" value="Log in" /></li>
+<li>
+<ul>
+<li class="service"><a href="https://www.flowdock.com/auth/google" rel="external"><img alt="Log in with google" height="35" src="https://d2nx3wc0reuy7.cloudfront.net/ecd31d017/images/services/google-round-shadow.png" width="35" /></a></li>
+<li class="service"><a href="https://www.flowdock.com/auth/facebook" rel="external"><img alt="Log in with facebook" height="35" src="https://d2nx3wc0reuy7.cloudfront.net/04c46f6da/images/services/facebook-round-shadow.png" width="35" /></a></li>
+</ul>
+</li>
+</ol></fieldset></form>
+
+</div>
+
+</div>
+</div>
+<div class="hr narrow"></div>
+<footer class="plain">
+<div class="container">
+<ul>
+<li><a href="https://www.flowdock.com/" class="secondary" title="Go to Flowdock home">Home</a></li>
+<li><a href="https://www.flowdock.com/about" class="secondary">About</a></li>
+<li><a href="https://www.flowdock.com/help" class="secondary">Help</a></li>
+<li><a href="https://www.flowdock.com/privacy" class="secondary">Privacy Policy</a></li>
+<li>
+<span>&copy; Flowdock Ltd</span>
+</li>
+</ul>
+</div>
+</footer>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2741725-7']);
+  _gaq.push(['_setDomainName', ".flowdock.com"]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+
+</script>
+
+</div>
+</body>
+</html>

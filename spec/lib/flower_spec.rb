@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Flower do
-  describe "init" do
+  describe "#new" do
     before do
       @flower = Flower.new
     end
