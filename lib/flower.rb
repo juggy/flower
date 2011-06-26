@@ -4,23 +4,25 @@ require 'typhoeus'
 require 'json'
 
 class Flower
+  require File.expand_path(File.join(File.dirname(__FILE__), 'session'))
+  require File.expand_path(File.join(File.dirname(__FILE__), 'command'))
+  require File.expand_path(File.join(File.dirname(__FILE__), 'config'))
+
+  Dir.glob("commands/*.rb").each do |file|
+    require File.expand_path(File.join(File.dirname(__FILE__), file))
+  end
+
   attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
 
   COMMANDS = {} # We are going to load available commands in here
 
   def initialize
-    puts " Booting Flower..."
-
     self.messages_url = Flower::Config.messages_url
     self.post_url     = Flower::Config.post_url
     self.flow_url     = Flower::Config.flow_url
     self.uuid         = Flower::Config.uuid
     self.session      = Session.new()
     self.users        = {}
-    
-    session.login
-    get_users!
-    monitor!
   end
 
   def say(message, options = {})
@@ -37,6 +39,12 @@ class Flower
   end
 
   private
+  def boot!
+    session.login
+    get_users!
+    monitor!
+  end
+
   def monitor!
     get_messages do |messages|
       respond_to(messages)

@@ -1,7 +1,17 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    diff-lcs (1.1.2)
     mime-types (1.16)
+    mocha (0.9.12)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.4)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
     typhoeus (0.2.4)
       mime-types
       mime-types
@@ -10,4 +20,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  mocha (~> 0.9.12)
+  rspec (~> 2.6.0)
   typhoeus (~> 0.2.4)

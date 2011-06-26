@@ -1,13 +1,9 @@
+task :spec do
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new
+end
+
 task :run do
-  $: << "."
-  require "lib/flower"
-  require "lib/session"
-  require "lib/command"
-  require "lib/config"
-
-  Dir.glob("lib/commands/*.rb").each do |file|
-    require file
-  end
-
-  Flower.new
+  require File.expand_path(File.join(File.dirname(__FILE__), 'lib', 'flower'))
+  Flower.new.boot!
 end
