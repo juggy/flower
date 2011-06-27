@@ -17,9 +17,9 @@ class Flower
   attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
 
   def initialize
-    self.messages_url = Flower::Config.messages_url
-    self.post_url     = Flower::Config.post_url
-    self.flow_url     = Flower::Config.flow_url
+    self.messages_url = base_url + "/flows/#{Flower::Config.flow}/apps/chat/messages"
+    self.post_url     = base_url + "/messages"
+    self.flow_url     = base_url + "/flows/#{Flower::Config.flow}.json"
     self.uuid         = Flower::Config.uuid
     self.session      = Session.new()
     self.users        = {}
@@ -45,6 +45,10 @@ class Flower
   end
 
   private
+  def base_url
+    "https://#{Flower::Config.company.downcase}.flowdock.com"
+  end
+
   def monitor!
     get_messages do |messages|
       respond_to(messages)

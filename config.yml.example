@@ -1,11 +1,7 @@
 ---
   email: "user@domain.com"
   password: "supersecret"
-  messages_url: "https://company.flowdock.com/flows/main/apps/chat/messages"
-  post_url: "https://company.flowdock.com/messages"
-  flow_url: "https://company.flowdock.com/flows/main.json"
+  company: YourSubdomain
+  flow: main
   uuid: "xxxxxxxx"
   bot_nick: "Bot"
-  chartbeat:
-    domain: "yourwebsite.com"
-    key: "secretapikey"
