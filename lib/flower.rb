@@ -26,16 +26,13 @@ class Flower
   end
 
   def say(message, options = {})
-    if options[:mention]
-      tags = ":highlight:#{options[:mention]}"
-    end
-    post(message, tags)
+    post(message, parse_tags(options))
   end
 
-  def paste(message)
+  def paste(message, options = {})
     message = message.join("\n") if message.respond_to?(:join)
     message = message.split("\n").map{ |str| (" " * 4) + str }.join("\\n")
-    post(message)
+    post(message, parse_tags(options))
   end
 
   def boot!
@@ -91,5 +88,11 @@ class Flower
 
   def post(message, tags = nil)
     session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :tags => tags, :app => "chat", :event => "message", :channel => "/flows/main")
+  end
+
+  def parse_tags(options)
+    if options[:mention]
+      ":highlight:#{options[:mention]}"
+    end
   end
 end
