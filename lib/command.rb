@@ -10,7 +10,7 @@ class Flower::Command
   end
 
   def self.delegate_command(command, message, sender, flower)
-    return if Flower::COMMANDS[command].nil?
+    return false if Flower::COMMANDS[command].nil?
     Flower::COMMANDS[command].respond(command, message, sender, flower)
   end
 end
