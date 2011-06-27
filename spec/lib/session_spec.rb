@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Flower::Session do
   before do
     @session = Flower::Session.new
-    Typhoeus::Hydra.hydra.clear_stubs
   end
 
   describe "#new" do
@@ -33,7 +32,7 @@ describe Flower::Session do
   describe "#get_json" do
     it "should return the parsed JSON response body" do
       response = Typhoeus::Response.new(:code => 200, :body => '{"foo": "1", "bar": 2}')
-      Typhoeus::Hydra.hydra.stub(:get, "www.foodock.com?").and_return(response) # '?' - ?!
+      Typhoeus::Hydra.hydra.stub(:get, "www.foodock.com?").and_return(response)
 
       json = @session.get_json("www.foodock.com")
       json.should == {"foo" => "1", "bar" => 2}
@@ -42,9 +41,15 @@ describe Flower::Session do
 
   describe "#post" do
     it "should post the given params" do
-      response = Typhoeus::Response.new(:code => 200)
-      Typhoeus::Hydra.hydra.stub(:post, "www.foodock.com").and_return(response)
-      @session.post("www.foodock.com", {:foo => "bar"}).should be_nil
+      class Typhoeus::Request
+        def self.post(url, params)
+          @called  = true if
+            url    == "www.foodock.com" &&
+            params == {:params => {:foo => "bar"}, :headers => {:Cookie => nil}}
+        end
+      end
+      @session.post("www.foodock.com", {:foo => "bar"}).should be_true
+      Typhoeus::Request.instance_variable_get("@called").should be_true
     end
   end
 

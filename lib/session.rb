@@ -26,6 +26,6 @@ class Flower::Session
 
   def post(url, params)
     Typhoeus::Request.post(url, :params => params, :headers => {:Cookie => cookie})
-    return nil
+    return true
   end
 end
