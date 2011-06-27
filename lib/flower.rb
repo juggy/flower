@@ -14,13 +14,12 @@ class Flower
     require File.expand_path(File.join(File.dirname(__FILE__), "..", file))
   end
 
-  attr_accessor :messages_url, :post_url, :flow_url, :session, :uuid, :users
+  attr_accessor :messages_url, :post_url, :flow_url, :session, :users
 
   def initialize
     self.messages_url = base_url + "/flows/#{Flower::Config.flow}/apps/chat/messages"
     self.post_url     = base_url + "/messages"
     self.flow_url     = base_url + "/flows/#{Flower::Config.flow}.json"
-    self.uuid         = Flower::Config.uuid
     self.session      = Session.new()
     self.users        = {}
   end
@@ -73,8 +72,6 @@ class Flower
   
   def respond_to(messages)
     messages.each do |message_json|
-      next if message_json["uuid"] == uuid # Ignore my own messages
-      
       if match = bot_message(message_json["content"])
         match = match.to_a[1].split
         Flower::Command.delegate_command(match.shift || "", match.join(" "), users[message_json["user"].to_i], self)
@@ -87,7 +84,7 @@ class Flower
   end
 
   def post(message, tags = nil)
-    session.post(post_url, :uuid => uuid, :message => "\"#{message}\"", :tags => tags, :app => "chat", :event => "message", :channel => "/flows/main")
+    session.post(post_url, :message => "\"#{message}\"", :tags => tags, :app => "chat", :event => "message", :channel => "/flows/main")
   end
 
   def parse_tags(options)

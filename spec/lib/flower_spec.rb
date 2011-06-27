@@ -6,7 +6,7 @@ describe Flower do
   end
 
   describe "#new" do
-    %w(messages_url post_url flow_url uuid).each do |attribute|
+    %w(messages_url post_url flow_url).each do |attribute|
       it "should set the #{attribute} attributes" do
         @flower.send(attribute).should_not be_nil
         @flower.send(attribute).should be_a(String)

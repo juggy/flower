@@ -3,5 +3,4 @@
   password: "supersecret"
   company: YourSubdomain
   flow: main
-  uuid: "xxxxxxxx"
   bot_nick: "Bot"
