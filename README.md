@@ -1,6 +1,6 @@
 # Flower
 
-### Flower is a Flockdock Bot
+### Flower is a Flowdock Bot
 
 Flowdock is a team collaboration and group chat service, similar to Campfire.
 
@@ -10,7 +10,7 @@ Flower was made to be easy to extend with your own commands.
 
 ### How do I use it?
 
-1. Create a new Flowdock accout for your Flower bot. Give it a nick, for example "Bot", or "Steve".
+1. Create a new Flowdock account for your Flower bot. Give it a nick, for example "Bot", or "Steve".
 2. Download the source
 3. Copy and rename `config.yml.example` to `config.yml`, and fill it with your settings
 4. `rake run`
