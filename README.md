@@ -11,9 +11,9 @@ Flower was made to be easy to extend with your own commands.
 ### How do I use it?
 
 1. Create a new Flowdock account for your Flower bot. Give it a nick, for example "Bot", or "Steve".
-2. Download the source
+2. Download/clone the repository
 3. Copy and rename `config.yml.example` to `config.yml`, and fill it with your settings
-4. `rake run`
+4. Run the bot in the background: `rake run &`
 5. Mention your Bot in the chat to command it
 
 ### Writing my own commands
