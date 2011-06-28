@@ -10,7 +10,7 @@ class Flower
 
   COMMANDS = {} # We are going to load available commands in here
 
-  Dir.glob("lib/commands/*.rb").each do |file|
+  Dir.glob("lib/commands/**/*.rb").each do |file|
     require File.expand_path(File.join(File.dirname(__FILE__), "..", file))
   end
 
